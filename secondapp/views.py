@@ -1,14 +1,36 @@
 from ast import Return
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Course
+from .models import ArmyShop, Course
+
+
+def army_shop(request):
+    shops = ArmyShop.objects.all()
+    # result = ''
+    # for c in curriculum:
+    # result += c.name + '<br>'
+    # return HttpResponse(result)
+    return render(request, 'secondapp/army_shop.html', {
+        'data': shops
+    })
+
 
 def show(request):
     course = Course.objects.all()
-    result = ''
-    for c in course:
-        result += c.name + '<br>'
-    return HttpResponse(result)
+    # result = ''
+    # for c in curriculum:
+    # result += c.name + '<br>'
+    # return HttpResponse(result)
+    return render(request, 'secondapp/show.html', {
+        'data': course
+    })
+
+# def show(request):
+#     course = Course.objects.all()
+#     result = ''
+#     for c in course:
+#         result += c.name + '<br>'
+#     return HttpResponse(result)
 
 
 def insert(request):
