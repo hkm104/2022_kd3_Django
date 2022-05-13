@@ -3,13 +3,43 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import ArmyShop, Course
 
+def course_ajax(request):
+    return render(
+        request, 'secondapp/course_ajax.html', {})
+    #jeju_olle_list = JejuOlle.objects.all()
 
-def army_shop(request):
-    shops = ArmyShop.objects.all()
+def req_get(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    c = request.GET['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+def req_ajax4(request):
+    return render(request, 'firstapp/ajax4.html')
+
+
+def army_shop2(request, year, month):
+    shops = ArmyShop.objects.filter(year=year,month=month)
     # result = ''
     # for c in curriculum:
     # result += c.name + '<br>'
     # return HttpResponse(result)
+    return render(request, 'secondapp/army_shop.html', {
+        'data': shops
+    })
+
+
+def army_shop(request):
+    # shops = ArmyShop.objects.all()
+    # result = ''
+    # for c in curriculum:
+    # result += c.name + '<br>'
+    # return HttpResponse(result)
+    #             GET['prd']
+    prd = request.GET.get('prd')
+    if not prd: #prd에 값이 없을 경우
+        prd =''
+    shops = ArmyShop.objects.filter(name__=prd)
     return render(request, 'secondapp/army_shop.html', {
         'data': shops
     })

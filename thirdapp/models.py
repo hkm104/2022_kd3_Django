@@ -1,7 +1,5 @@
 
 # Create your models here.
-from asyncio.windows_events import NULL
-from xmlrpc.client import TRANSPORT_ERROR
 from django.db import models
 from django.db.models.fields import CharField, IntegerField, FloatField, DateField
 
@@ -66,6 +64,9 @@ class Dept(models.Model):
     deptno = models.IntegerField(primary_key=True)
     dname = models.CharField(max_length=14, null=True)
     loc = models.CharField(max_length=13, null=True)
+    class Meta:
+        db_table = 'dept'
+        managed = False
 
 class emp(models.Model):
     empno = models.IntegerField(primary_key=True)
@@ -75,4 +76,8 @@ class emp(models.Model):
     hiredate = models.DateTimeField()
     sal = models.IntegerField(11, null=True)
     comm = models.IntegerField(11, null=True)
-    deptno = models.ForeignKey(Dept)
+    dept = models.ForeignKey(Dept,on_delete=models.CASCADE,db_column='deptno')
+    class Meta:
+        db_table = 'emp'
+        managed = False
+    
