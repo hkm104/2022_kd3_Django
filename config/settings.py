@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r1h$a+xn8!oml_60tax&c4@dii7p11t=0y2sc!w907fx!+41a#'
+SECRET_KEY = 'django-insecure-z@pr&*ym4anaz_zqrgz_ol8$ugy^$#&+e^^irb++8$1r1nwy0x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # 모든 도메인에서 실행 가능 상태
+ALLOWED_HOSTS = ['*']  # 모든 도메인에서 실행 가능 상태
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,36 +72,35 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+# Oracle
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'ORCLKM',
+#         'ENGINE': 'django.db.backends.oracle',
+#         'NAME': 'ORCLHJ',
 #         'USER': 'system',
 #         'PASSWORD': '1234',
 #         'HOST': '127.0.0.1',
 #         'PORT': '1521',
-#         }
+#     }
 # }
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-
 # SQLite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-
     'custom': { # thirdapp에서 사용할 데이터베이스 설정 추가
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'human',
         'USER': 'human',
         'PASSWORD': '1234',
         'HOST': '15.164.153.191',
-        'PORT': 3306 
+        'PORT': 3306
     }
-
 }
 DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 
@@ -128,10 +127,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ko-kr'
 
-# TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True

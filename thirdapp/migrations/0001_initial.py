@@ -12,6 +12,22 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='JejuOlle',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('course', models.CharField(max_length=10)),
+                ('course_name', models.CharField(max_length=20)),
+                ('distance', models.FloatField()),
+                ('time_info', models.CharField(max_length=10)),
+                ('start_end_info', models.CharField(max_length=30)),
+                ('cre_date', models.DateField()),
+            ],
+            options={
+                'db_table': 'jeju_olle',
+                'managed': False,
+            },
+        ),
+        migrations.CreateModel(
             name='Shop',
             fields=[
                 ('shop_id', models.IntegerField(primary_key=True, serialize=False)),

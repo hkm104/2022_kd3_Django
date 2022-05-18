@@ -1,17 +1,16 @@
-from enum import Flag
 from django.db import models
-
+#     secondapp_army_shop
 class ArmyShop(models.Model):
-    year = models.IntegerField()
-    month = models.IntegerField()
-    type = models.TextField()
-    name = models.TextField()
+  year = models.IntegerField()
+  month = models.IntegerField()
+  type = models.TextField()
+  name = models.TextField()
 
-    class Meta:
-        db_table = 'army_shop'
-        #이미 생서어되어 있는 테이블이므로
-        managed = False
+  class Meta:
+    db_table = 'army_shop'
+    # 이미 생성되어 있는 테이블이므로
+    managed = False
 
 class Course(models.Model):
-    name = models.CharField(max_length=30)
-    cnt = models.IntegerField()
+  name = models.CharField(max_length=30)
+  cnt = models.IntegerField()
